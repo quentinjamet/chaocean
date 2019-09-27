@@ -1,4 +1,4 @@
-# Chaocean
+			# CHAOCEAN
 
 ![alt tag](fig/amoc_26n.png)
 
