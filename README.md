@@ -1,6 +1,8 @@
 # Chaocean
 
-The goal of this project is to diagnose the origin of the low-frequency variability in the North Atlantic.
+![alt tag](fig/amoc_26n.png)
+
+The goal of this project is to disentangle the low-frequency oceanic variability in the subtropcial North Atlantic as locally generated through intrinsic ocean processes, locally driven by the atmosphere or controlled by remote signals. 
 
 ## Initial condition, open boundaries and atmospheric forcing
 
