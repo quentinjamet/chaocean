@@ -5,32 +5,38 @@
   cheapaml_mask_width=5,
   cheapaml_h = 1000.,
   cheapaml_kdiff = 1000.
+  cheapaml_taurelax=0.1,
+  cheapaml_taurelaxocean=0.0
  &
 
  &CHEAPAML_PARM01
- UWindFile='windx.box'
- VWindFile='windy.box'
- SolarFile='solar.box'
- AirTempFile='tair.box'
+ UWindFile='u10.box'
+ VWindFile='v10.box'
+ SolarFile='radsw.box'
+ AirTempFile='t2.box'
 #same file for Tr
- TrFile='tair.box'
- AirQFile='qair.box'
+ TrFile='t2.box'
+ AirQFile='q2.box'
 #same file for Qr
- QrFile='qair.box'
+ QrFile='q2.box'
 #cheap_hfile='blh.box'
 #cheap_clfile='clouds.box'
- cheap_dlwfile='longwave.box'
+ cheap_dlwfile='radlw.box'
+ cheap_prFile='precip.box'
  periodicExternalForcing_cheap=.TRUE.,
+ useYearlyField_cheap=.TRUE.,
 # 6Hours
  externForcingPeriod_cheap=21600,
- externForcingCycle_cheap=31557600
+ externForcingCycle_cheap=31536000
  &
 
  &CHEAPAML_PARM02
   useFreshWaterFlux=.TRUE.,
+#  cheapamlXperiodic=.TRUE.,
   useFluxLimit=.TRUE.,
   FluxFormula='COARE3',
   usetimevarblh=.FALSE.,
   useclouds=.FALSE.,
   usedlongwave=.TRUE.,
+  usePrecip=.TRUE.,
  &

@@ -1,4 +1,4 @@
-#!sh -----------------
+# -----------------
 # for each output-stream:
 #  filename(n) : prefix of the output file name (only 8.c long) for outp.stream n
 #  frequency(n):< 0 : write snap-shot output every |frequency| seconds
@@ -10,10 +10,20 @@
 #                 file for the list of all available diag. in this particular config)
 #-----------------
  &diagnostics_list
- frequency(1) = 86400,
- filename(1) = 'cheapAML',
- fields(1,1) = 'CH_TAIR ','CH_QAIR ', 'CH_SH   ','CH_LH   ','CH_QNET ','CH_EmP  ',
-               'CH_Uwind', 'CH_Vwind'
+
+ frequency(1) = 432000.,
+ filename(1) = 'diag_cheapAML',
+ fields(9,1) = 'CH_TAIR ','CH_QAIR ', 'CH_SH   ','CH_LH   ','CH_QNET ','CH_EmP  ',
+               'CH_Uwind', 'CH_Vwind','CH_Prec',
+
+ frequency(2) = 432000.,
+ filename(2) = 'diag_ocnSurf',
+ fields(1,2) = 'ETAN',
+
+ frequency(3) = 432000.,
+ filename(3) = 'diag_ocnTave',
+ fields(5,3) = 'THETA','SALT','UVEL','VVEL','WVEL',
+
  &
 
 # Parameter for Diagnostics of per level statistics:

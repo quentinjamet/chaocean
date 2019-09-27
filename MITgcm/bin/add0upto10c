@@ -1,0 +1,21 @@
+#!/bin/sh
+xx='0000000000'$1
+yy='bbb'
+
+#count=0 ; echo $count $xx $yy
+while test $yy != 'aaa'
+do
+ zz=`echo $xx | sed 's/^0//'` 
+ if test $zz = $xx
+ then
+   echo $xx
+   exit 1
+ else
+  xx=$zz
+  yy=`echo $xx | sed 's/^..........$/aaa/'`
+  #count=`expr $count + 1` ; echo $count $xx $yy
+  #if test $count = 20 ; then yy='aaa' ; fi
+ fi
+done
+echo $xx
+exit 0

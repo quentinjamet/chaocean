@@ -4,9 +4,16 @@
 #
 # Continuous equation parameters
  &PARM01
- viscAh=200,
- diffKhT=200.,
- diffKhS=200.,
+# viscAh=50,
+ viscAh=20,
+# viscA4=5.E10,
+ viscA4=1.0E10,
+# diffKhT=50.,
+# diffKhS=50.,
+ diffKhT=20.,
+ diffK4T=1.0E10,
+ diffKhS=20.,
+ diffK4S=1.0E10,
  viscAz=1.E-5,
  diffKzT=1.E-5,
  diffKzS=1.E-5,
@@ -23,16 +30,18 @@
  hFacMin=0.4,
  nonHydrostatic=.FALSE.,
  readBinaryPrec=32,
+# writeBinaryPrec=32,
  tempAdvScheme=33,
  saltAdvScheme=33,
  staggerTimeStep=.TRUE.,
  implicitDiffusion=.TRUE.,
- implicitviscosity=.TRUE.,
+ implicitViscosity=.TRUE.,
  useRealFreshWaterFlux=.TRUE.,
  balanceEmPmR=.TRUE.,
 # momStepping=.FALSE.,
 # tempStepping=.FALSE.,
 # saltStepping=.FALSE.,
+ useSingleCpuIO=.TRUE.,
  &end
 
 # Elliptic solver parameters
@@ -43,27 +52,25 @@
  cg3dTargetResidual=1.E-8,
  &end
 
-# Time stepping parameters
+# Time stepping parameters 77760=180d, 79920=185d, 51840=120d, 54000=125d
  &PARM03
- nIter0=0,
-#nTimeSteps=10,
-#10 yea
- endTime=315360000,
-#20 days
-# endTime=1728000,
- deltaT=450.0,
+ nIter0=8514720,
+ nTimeSteps=157680,
+ deltaT=200.0,
  abEps=0.01,
- pChkptFreq=0.0,
- chkptFreq=0.0,
-# dumpFreq=120,
-# 5-day
- dumpFreq=432000,
- monitorFreq=432000.,
+# permanent pickup every 73-d
+ pChkptFreq=31536000.,
+# rolling pickup every 5-d (used for restarts)
+ chkptFreq=6307200.,
+#- 5-d snapshot -
+ dumpFreq=0.,
+# taveFreq=432000,
+ monitorFreq=21600.,
  periodicExternalForcing=.TRUE.,
-#5 days
+ useYearlyField=.TRUE.,
+# 5 days
  externForcingPeriod=432000,
-# 360 days
- externForcingCycle=31104000,
+ externForcingCycle=31536000,
 
  &end
 
@@ -71,21 +78,23 @@
 # Gridding parameters
  &PARM04
  usingSphericalPolarGrid=.TRUE.,
- ygOrigin=-20,
- xgOrigin=262,
- delXfile='dx.box',
- delYfile='dy.box',
- delrfile='dz.box',
+# ygOrigin=-20,
+# xgOrigin=262,
+ ygOrigin=-19.9583,
+ xgOrigin=261.9570,
+ delXFile='dx.bin',
+ delYFile='dy.bin',
+ delRFile='dz.bin',
  &end
 
 # Input datasets
  &PARM05
- bathyFile='topo.box',
- uVelInitFile='u_init.box',
- vVelInitFile='v_init.box',
-hydrogThetaFile='t_init.box',
-hydrogSaltFile='s_init.box',
-pSurfInitFile='e_init.box',
+ bathyFile='topo.bin',
+ uVelInitFile='u_ini.bin',
+ vVelInitFile='v_ini.bin',
+ hydrogThetaFile='t_ini.bin',
+ hydrogSaltFile='s_ini.bin',
+ pSurfInitFile='eta_ini.bin',
 # checkIniSalt=.FALSE.,
 # checkIniTemp=.FALSE.,
  &end

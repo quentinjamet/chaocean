@@ -36,17 +36,17 @@ C     Nr  - No. points in R for full process domain.
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  100,
-     &           sNy =  100,
+     &           sNx =  50,
+     &           sNy =  50,
      &           OLx =   3,
      &           OLy =   3,
      &           nSx =   1,
      &           nSy =   1,
-     &           nPx =   10,
-     &           nPy =   9,
+     &           nPx =   20,
+     &           nPy =   18,
      &           Nx  = sNx*nSx*nPx,
      &           Ny  = sNy*nSy*nPy,
-     &           Nr  =   73)
+     &           Nr  =   46)
 
 C     MAX_OLX  - Set to the maximum overlap region size of any array
 C     MAX_OLY    that will be exchanged. Controls the sizing of exch

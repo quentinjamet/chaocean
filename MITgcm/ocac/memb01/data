@@ -1,0 +1,101 @@
+#!sh ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+ &PARM01
+# viscAh=50,
+ viscAh=20,
+# viscA4=5.E10,
+ viscA4=1.0E10,
+# diffKhT=50.,
+# diffKhS=50.,
+ diffKhT=20.,
+ diffK4T=1.0E10,
+ diffKhS=20.,
+ diffK4S=1.0E10,
+ viscAz=1.E-5,
+ diffKzT=1.E-5,
+ diffKzS=1.E-5,
+ no_slip_sides=.FALSE.,
+ no_slip_bottom=.FALSE.,
+# eosType='MDJWF',
+ eosType='JMD95Z',
+# eosType='LINEAR',
+# tAlpha=2.E-4,
+# sBeta=7.4E-04,
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ exactConserv=.TRUE.,
+ hFacMin=0.4,
+ nonHydrostatic=.FALSE.,
+ readBinaryPrec=32,
+# writeBinaryPrec=32,
+ tempAdvScheme=33,
+ saltAdvScheme=33,
+ staggerTimeStep=.TRUE.,
+ implicitDiffusion=.TRUE.,
+ implicitViscosity=.TRUE.,
+ useRealFreshWaterFlux=.TRUE.,
+ balanceEmPmR=.TRUE.,
+# momStepping=.FALSE.,
+# tempStepping=.FALSE.,
+# saltStepping=.FALSE.,
+ useSingleCpuIO=.TRUE.,
+ &end
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=400,
+ cg2dTargetResidual=1.E-13,
+ cg3dMaxIters=200,
+ cg3dTargetResidual=1.E-8,
+ &end
+
+# Time stepping parameters 77760=180d, 79920=185d, 51840=120d, 54000=125d
+ &PARM03
+ nIter0=8514720,
+ pickupStrictlyMatch=.FALSE.,
+ nTimeSteps=157680,
+ deltaT=200.0,
+ abEps=0.01,
+# permanent pickup every 73-d
+ pChkptFreq=31536000.,
+# rolling pickup every 5-d (used for restarts)
+ chkptFreq=6307200.,
+#- 5-d snapshot -
+ dumpFreq=0.,
+# taveFreq=432000,
+ monitorFreq=21600.,
+ periodicExternalForcing=.TRUE.,
+ useYearlyField=.FALSE.,
+# 5 days
+ externForcingPeriod=432000,
+ externForcingCycle=31536000,
+
+ &end
+
+
+# Gridding parameters
+ &PARM04
+ usingSphericalPolarGrid=.TRUE.,
+# ygOrigin=-20,
+# xgOrigin=262,
+ ygOrigin=-19.9583,
+ xgOrigin=261.9570,
+ delXFile='dx.bin',
+ delYFile='dy.bin',
+ delRFile='dz.bin',
+ &end
+
+# Input datasets
+ &PARM05
+ bathyFile='topo.bin',
+ uVelInitFile='u_ini.bin',
+ vVelInitFile='v_ini.bin',
+ hydrogThetaFile='t_ini.bin',
+ hydrogSaltFile='s_ini.bin',
+ pSurfInitFile='eta_ini.bin',
+# checkIniSalt=.FALSE.,
+# checkIniTemp=.FALSE.,
+ &end
