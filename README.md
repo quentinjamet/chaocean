@@ -1,56 +1,43 @@
-			# CHAOCEAN
+# CHAOCEAN
 
-![alt tag](fig/amoc_26n.png)
+![alt tag](files/amoc_26n.png)
 
 The goal of this project is to disentangle the low-frequency oceanic variability in the subtropcial North Atlantic as locally generated through intrinsic ocean processes, locally driven by the atmosphere or controlled by remote signals. 
 
-## Initial condition, open boundaries and atmospheric forcing
+We run for this 4 ensembles with permutation in the atmospheric forcing and opend boundary conditions as fully varying (realistic) or yearly repeating. The 4 ensembles are referred to as: 
 
-All the scripts needed to build the script directory. The main script is mygendata.m. To generate new initial condition you need to set
+|                       | Fully varying atm  | Yearly repeating atm  |
+|-----------------------|--------------------|-----------------------|
+| Fully varying OBCS    |       ORAR         |        ORAC           |
+|-----------------------|--------------------|-----------------------|
+| Yearly repeating OBCS |       OCAR         |        OCAC           |
 
-- the output directory
-```
-dir_o = '/tank/groups/climode/chaocean/init_cond97_12/';
-```
+For in depth details, see the project report [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf) on these simulations are given in the following.
 
-- Then tere are a couple of flags; if you start from scratch, it should be
-```
-build_init = 1; % 1: generate initial conditions, 0: no
-build_obcs = 1; % 1: generate open boundaries files, 0: no
 
-build_atmosphere = 1; % 1: generate atmospheric forcing files, 0: no
+## Initial conditions, open boundaries and atmospheric forcing
 
-flag_cut = 1;  % 1: put eastern atlantic in south america, 0: no
-flag_interp = 0; % 1: matlab interpolation (slower), 0: mygriddata
-flag_plot = 0; % 1: plot a couple of diags, 0: no
-```
 
-- In the NEW GRID section, adjust the grid size. For example, to set the resolution to 1/12, do
-```
-dla = 1/12.;
-dlo = 1/12;
-```
+- Open boundaries: Derived from the 55-yr long, 1/12 global ocean configuration ORCA12.L46-MJM88; Applied every 5 days. 
 
-- Choose the vertical grid: you can comment/uncomment the dz_fi line you like or create a new one.
+- Atmospheric forcing: Derived from DFS4.4 and DFS5.2 data set; Applied every 6 hours.
+
+- Initial conditions: Derived from a perturbed ocean state at the end of the 5-years spin-up (more details below).
+
+All the scripts needed to build the input (forcing and initial conditions) can be found in ```./mk_config/```. 
+
+- 
+
+
+
+- ```./mk_extended_flx.m```: The 50-yr long atmopsheric forcing and boundary conditions are split in 1-yr long files. For the time interpolation to be made properly at run time, two additional time records, corresponding to the last (first) time record of the preceding (following) year are placed at the end of each files. The code as been modified to properly handle this time interpolation (see below).
 
 ## Configuration files for MITgcm
 
-All these files are in the MITgcm directory. The 2 sub-directories are input and code (usual MITgcm configurations files). Each time you change the resolution, you need to make sure the parameters in `data` are still right. When the grid changes, you also need to update `data.obcs`.
-
-The tiles are defined in `SIZE.h`. Here is an exemple of a tiling configuration
-(this plot was produced with `mygendata.m` with   `nxp = 10;` and  `nyp = 9;`)
+All these files are in the MITgcm directory. The sub-directories are for namelists (```input_*```) and associated code (```code_*```) (usual MITgcm configurations files). 
 
 ![alt tag](scripts/topo_tiles.png)
 
-## 1/4 degree configuration
-
-to run a 1/4 degree run, you need to
-- change the resolution in mygendata.m
-- in `input` dir, copy `data.obcs_025` to `data.obcs` and `data_025` to `data`
-- in `code` dir, copy `SIZE.h_025` to `SIZE.h`
-
-This configuration is supposed to run on 25 procs
-
 ## Runs
 
-Once you started a run, fill out the table in [runs/README.md](runs/README.md)
+
