@@ -4,7 +4,7 @@
 
 The goal of this project is to disentangle the low-frequency oceanic variability in the subtropcial North Atlantic as locally generated through intrinsic ocean processes, locally driven by the atmosphere or controlled by remote processes. 
 
-In depth details of the simulations performed for this project are available in the [files/chaocean_project_report.pdf](chaocean project report).
+In depth details of the simulations performed for this project are available in the [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf).
  
 
 
