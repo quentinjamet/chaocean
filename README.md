@@ -4,20 +4,21 @@
 
 The goal of this project is to disentangle the low-frequency oceanic variability in the subtropcial North Atlantic as locally generated through intrinsic ocean processes, locally driven by the atmosphere or controlled by remote processes. 
 
-In depth details of the simulations performed for this project are available in the [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf).
+In depth details of the simulations performed for this project are available at [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf).
  
 
 
 ## Configuration
 
-For this project, we developped an eddy-resolving (1/12) ocean regional configuration of the North Atlantic [20S, 55N] with the MITgcm, coupled the atmospheric boundary layer model CheapAML. 12 realizations under 4 different forcing scenario have been completed, providing a set of 4 ensembles with 12 members each. Each ensemble is exposed to its own forcing, which is a permutation of the atmospheric forcing and the open boundary conditions as fully varying (realistic) or yearly repeating. The 4 ensembles are referred to as:
+For this project, we set up an eddy-resolving (1/12) ocean regional configuration of the North Atlantic [20S, 55N] with the MITgcm, coupled the atmospheric boundary layer model CheapAML. We have run 4 different experiments of this configuration, which differ from one another by their surface forcing and open boundary conditions; their are either fully varying (realistic) or yearly repeating. All of these experiments have been integrated over 50 years (1963-2012) with a 12-member ensemble strategy; within an ensemble, all members are exposed to the same forcing (surface and open boundaries), but differ by their initial conditions at Janury, 1st 1963. 
+
+The 4 ensembles are referred to as:
 
 |                       | Fully varying atm  | Yearly repeating atm  |
 |-----------------------|--------------------|-----------------------|
 | Fully varying OBCS    |       ORAR         |        ORAC           |
 | Yearly repeating OBCS |       OCAR         |        OCAC           |
 
-Within each ensemble, the 12 realizations are initialized with 12 different perturbed ocean state, provinding a estimate of the sensibility of the system to initial conditions, i.e. the intrinsic oceanic variability.
 
 - (27/09/2019) The ensemble ORAR has been extend to 24 members (see ... for details on new ICs).
 
