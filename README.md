@@ -24,7 +24,7 @@ The 4 ensembles are referred to as:
 
 ## Initial conditions, open boundaries and atmospheric forcing
 
-Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in ```./mk_config/```. 
+Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in [./mk_config/](./mk_config/).
 
 - Initial conditions: The configuration is first spun-up for 5 years (1958-1963) from the ORCA12.L46-MJM88 initial conditions. Then, all ensembles are integrated forward in time for 50 years (1963-2012) with a 12-member ensemble strategy. The 12 initial conditions are common to all ensembles, and are meant to reflect the spread induced by the growth of small, dynamically consistent perturbations decorrelated at seasonal time scales (further details in ```[mk_config/](mk_config/)```.
 
