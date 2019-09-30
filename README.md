@@ -24,9 +24,9 @@ The 4 ensembles are referred to as:
 
 ## Initial conditions, open boundaries and atmospheric forcing
 
-Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in [./mk_config/](./mk_config/).
+Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in ```./mk_config/```.
 
-- Initial conditions: The configuration is first spun-up for 5 years (1958-1963) from the ORCA12.L46-MJM88 initial conditions. Then, all ensembles are integrated forward in time for 50 years (1963-2012) with a 12-member ensemble strategy. The 12 initial conditions are common to all ensembles, and are meant to reflect the spread induced by the growth of small, dynamically consistent perturbations decorrelated at seasonal time scales (further details in ```[mk_config/](mk_config/)```.
+- Initial conditions: The configuration is first spun-up for 5 years (1958-1963) from the ORCA12.L46-MJM88 initial conditions. Then, all ensembles are integrated forward in time for 50 years (1963-2012) with a 12-member ensemble strategy. The 12 initial conditions are common to all ensembles, and are meant to reflect the spread induced by the growth of small, dynamically consistent perturbations decorrelated at seasonal time scales (further details in [mk_config/](mk_config/).
 
 - Open boundaries: Oceanic velocities (U, V) and tracers (T, S) are restored with a 6 hours relaxation time scale toward oceanic state derived from the 55-year long 1/12 horizontal resolution ocean-only global configuration ORCA12.L46-MJM88. Open boundary conditions are applied every 5 days and linearly interpolated in between. 
 
@@ -35,7 +35,7 @@ Scripts used to build the inputs (forcing and initial conditions), along with th
 
 ## Configuration files for MITgcm
 
-All files needed to set up and run this configuration are provided in the ```[MITgcm/](MITgcm/)``` directory. Aside from usual MITgcm configurations files, this configuration uses the code provided in ```[code/](code/)```. Namelists are provided for each of the 4 ensemble in their associated directories. Bash script used at run time are provided in ```[bin/](bin/)```. Further informations and details are also provided there.
+All files needed to set up and run this configuration are provided in the [./MITgcm/](./MITgcm/) directory. Aside from usual MITgcm configurations files, this configuration uses the code provided in ```./code/```. Namelists are provided for each of the 4 ensemble in their associated directories. Bash script used at run time are provided in ```./bin/```. Further informations and details are also provided there.
 
 
 ## Simulations
