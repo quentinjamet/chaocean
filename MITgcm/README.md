@@ -41,7 +41,7 @@ The forcing files (both surface and open boundary conditions) used to generate o
 
 ## Reproducing an ensemble (ORAR)
 
-Bash scripts provided for the ensemble [./orar](./orar/) are example to reproduce a simulation. 
+Bash scripts provided for the ensemble [./orar/](./orar/) are example to reproduce a simulation. 
 
 - ```run.sh```: script to submit to the supercomputer bash scheduler (PBS for Cheyenne)
 
