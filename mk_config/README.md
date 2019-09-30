@@ -16,7 +16,7 @@ Path used in those scripts need to be updated to specific use.
 
 - ```mk_obcsFlx.m```: Interpolate ORCA12.L46-MJM88 U, V, T, S on the boundaries (North (55N), South (20S) and at the Strait of Gibraltar) of the domain.
 
-- ```mk_extended_flx.m```: The 50-yr long atmopsheric forcing and boundary conditions are split in 1-yr long files. For the time interpolation to be made properly at run time, two additional time records, corresponding to the last (first) time record of the preceding (following) year are placed at the end of each files. The code as been modified to properly handle this time interpolation (see [../MITgcm/code/](../MITgcm/code/)).
+- ```mk_extended_flx.m```: The 50-yr long atmopsheric forcing and boundary conditions are split in 1-yr long files. For the time interpolation to be made properly at run time, two additional time records, corresponding to the last (first) time record of the preceding (following) year are placed at the end of each files. The code as been modified to handle this time interpolation (see [../MITgcm/code/](../MITgcm/code/)).
 
 - ```mk_neutral_year_wind_12.m```: Make the normal year forcing for the 2 ensemble driven by early repeating atmospheric forcing. 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 ### Job Name
-#PBS -N ocar_mem01
+#PBS -N orar_mem00
 ### Project code
 #PBS -A UFSU0011
 #PBS -l walltime=12:00:00
@@ -11,7 +11,8 @@
 #PBS -m abe
 #PBS -M qjamet@fsu.edu
 
-# export the qsub command into the bash script
+# export the qsub command into the bash script to make auto-resubmission
+# !!!!! This is plateform dependent !!!!!!
 export SUBMIT=/opt/pbs/default/bin/qsub
 
 #-----------------------------------------------------------------------------#
@@ -25,6 +26,7 @@ varlist="confName confDir inDir runDir outDir scrDir monitor \
 source pc.vars
 
 #-- make the run directory (all files will be linked there) --
+# usually on a scratch disk
 if [ ! -d $runDir ]; then
  echo "run directory does not exist"$runDir > $monitor
  exit
@@ -119,7 +121,7 @@ mv $confDir/memb${mem_nb}/$monitor ${outDir}/memb${mem_nb}/run${period}/$monitor
 #-----------------------------------------------------------------------------#
 #-- back to config directory --
 cd $confDir/memb${mem_nb}
-rm -rf ocar_mem${mem_nb}.*
+rm -rf orar_mem${mem_nb}.*
 
 source pc.vars
 iit=$sit

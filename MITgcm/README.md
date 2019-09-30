@@ -1,18 +1,37 @@
-# Code, namelist (input) and bash scripts description
+# Re-running the configuration
+
+We provide here all the necessary informations to compile and run the simulation used in the project. The piece of code for the MITgcm, associated namelists and bash scripts used at run time, as well as location of where to retrieve forcing files, are all provided here. In case of problem, you can always contact us ([quentin,jamet@univ-grenoble-alpes.fr](quentin,jamet@univ-grenoble-alpes.fr)).
+
 
 Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheapaml) are ensembler-dependent and are thus provided with their associated ensemble.
 
-## ```./code/```: 
+## MITgcm code: 
 
-- Specific code used in the smulations. The ```SIZE.h``` can be changed to spread the computation on fewer/larger number of processors. 
+The configuration has been made with the Checkpoint 66d of the MITgcm. Issued are likely to emerge with latter version due to model updates (particularly the cheapaml package). Following MITgcm 'Getting Started with MITgcm' instructions on the code manual (...), we provide the specific piece of code for this configuration in the ```./code/``` directory. The content of the ```package.conf``` file list the different packages used:
 
-- Important modifications here are made to read 1-year long forcing files as sub-samples of long time records (50 years in our case). This is made through the use of the run time parameter ```useYearlyField``` and ```useYearlyField_cheap```, and modify the get_periodic_interval.F to read in these 2 extra time records.
+```
+   gfd
+   obcs
+   kpp
+   gmredi (compiled but not used at run time (useGMRedi=.FALSE. in data.pkg))
+   cheapaml
+   diagnostics
+```
 
-- See ```[../mk_config/mk_extended_flx.m](../mk_config/mk_extended_flx.m)``` for how to generate the appropriate forcing files.
+Most important modifications of the original code concern the way input files are read. To avoid 50-year long forcing files (which would have represent about 60GB of data for each atmospheric fields), we split this long time series into 50, 1-yr long time series, one for each year. We thus leveraged the ```periodicExternalForcing``` (```periodicExternalForcing_cheap``` for CheapAML), and modified the time interpolation made at the begin and at the end of the 1-year long simulation. Changes appear in ```external_fields_load.F```, such that 2 additional time records in the forcing files are considered, corresponding to the last (first) time record of the preceding (following) year. (See ../mk_config/mk_extended_flx.m for how to generate those forcing files). To let the model know about these 2 additional time records, we added the run time flag ```useYearlyField``` (and ```useYearlyField_cheap``` for CheapAML) in the associated namelists.
 
-## ```./orar/```, ```./ocar/```, ```./orac/```, ```./ocac/```
 
-- namelists to run the 4 different ensembles. In each, common namelists to all members are in ```./input/``` and specific ones in ```./memb##/```
+## Namelists:
+
+Namelists common to all ensembles are provided in the ```./input/``` directory. This are run time parameters used for the simulations, where prescription of open boundary conditions (```data.obcs```) and model outputs (```data.diagnostics```) are for instance made. 
+
+Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Two points here:
+
+- Using realistic forcing: In ensembles exposed to realistic open boundary conditions (ORAR and ORAC), ```useYearlyField=.TRUE.``` in ```data``` (```=.FALSE``` for the 2 other ensembles). Same, In ensembles exposed to realistic surface forcing (ORAR and OCAR), ```useYearlyField_cheap=.TRUE.``` in ```data.cheapaml``` (```=.FALSE.``` for the two other ensembles). 
+
+- The repeat cycle is set to 1 year in all cases (```externForcingCycle=31536000``` and ```externForcingCycle_cheap=31536000```), and the repeat period to 5 days (6 hours) for the obcs (cheapaml), i.e. ```externForcingPeriod=432000``` in ```data``` (```externForcingPeriod_cheap=21600``` in ```data.cheapaml```).
+
+
 
 ## Reproducing an ensemble (ORAR)
 
