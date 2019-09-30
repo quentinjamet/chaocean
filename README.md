@@ -35,7 +35,7 @@ Scripts used to build the inputs (forcing and initial conditions), along with th
 
 ## Configuration files for MITgcm
 
-All files needed to set up and run this configuration are provided in [./MITgcm/](./MITgcm/). Piece of code specific to this configuration are in ```./code/```, and associated namelists in ```./input/```. The namelists ```data``` and ```data.cheapaml``` are specific to each ensemble and thus placed in their associated directories. We also provide bash scripts in ```./bin/``` to help replication. Further informations and details are also provided there.
+All files needed to set up and run this configuration are provided in [./MITgcm/](./MITgcm/). Specific piece of code are in ```./code/```, and associated namelists in ```./input/```. The namelists ```data``` and ```data.cheapaml``` are specific to each ensemble and thus placed in their associated directories. We also provide bash scripts in ```./bin/``` to help replication. Further informations and details are also provided there.
 
 
 ## Simulations
