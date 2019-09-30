@@ -1,6 +1,6 @@
 # Re-running the configuration
 
-We provide here all the necessary informations to compile and run the simulation used in the project. The piece of code for the MITgcm, associated namelists and bash scripts to help reproducing the run, as well as location of where to retrieve forcing files, are all provided here. In case of problem, you can always contact us (<quentin.jamet@univ-grenoble-alpes.fr>).
+We provide here all the necessary informations to compile and run the simulation used in the project. The piece of code for the MITgcm, associated namelists and bash scripts to help reproducing the run, as well as location of where to retrieve forcing files, are all provided here. In case of problem, you can always contact me (<quentin.jamet@univ-grenoble-alpes.fr>).
 
 
 
