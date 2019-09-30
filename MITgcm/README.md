@@ -53,13 +53,11 @@ unzip MITgcm
 rm -rf MITgcm-checkpoint66d/verification/
 ```
 - Compile the code. Update the ```Compile``` bash script with appropriate root directory and option file. The provided example is made to run on Cheyenne under a testing directory.
-
 ```
 cd ./bin/
 ./Compile
 cd ../
 ```
-
 At this stage, the configuration should have compiled, and a ```mitgcmuv``` executable should be present in the ```./chaocean/MITgcm/build/``` directory. If this is not the case, I am affraied something went wrong ...
 
 - Retrieve initial conditions, grid and forcing files for memb00 and the year 1963 as an eample. These data set is potentially heavy and should be placed on a dedicated disk space. The bash script ```mk_input```  is an example ofi how to retrieve those data for the year 1963 and memb00.
