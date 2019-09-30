@@ -1,6 +1,7 @@
 # Re-running the configuration
 
-We provide here all the necessary informations to compile and run the simulation used in the project. The piece of code for the MITgcm, associated namelists and bash scripts used at run time, as well as location of where to retrieve forcing files, are all provided here. In case of problem, you can always contact us ([quentin,jamet@univ-grenoble-alpes.fr](quentin,jamet@univ-grenoble-alpes.fr)).
+We provide here all the necessary informations to compile and run the simulation used in the project. The piece of code for the MITgcm, associated namelists and bash scripts to help reproducing the run, as well as location of where to retrieve forcing files, are all provided here. In case of problem, you can always contact us ([quentin,jamet@univ-grenoble-alpes.fr](quentin,jamet@univ-grenoble-alpes.fr)).
+
 
 
 Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheapaml) are ensembler-dependent and are thus provided with their associated ensemble.
@@ -25,12 +26,17 @@ Most important modifications of the original code concern the way input files ar
 
 Namelists common to all ensembles are provided in the ```./input/``` directory. This are run time parameters used for the simulations, where prescription of open boundary conditions (```data.obcs```) and model outputs (```data.diagnostics```) are for instance made. 
 
-Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Two points here:
+Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Three points here:
 
 - In the ensembles exposed to realistic open boundary conditions (ORAR and ORAC), ```useYearlyField``` is set to ```.TRUE.``` in the ```data``` namelist (```=.FALSE``` for the 2 other ensembles). Same, In ensembles exposed to realistic surface forcing (ORAR and OCAR), ```useYearlyField_cheap``` is set tot ```.TRUE.``` in the ```data.cheapaml``` namelist (```=.FALSE.``` for the two other ensembles). 
 
 - The repeat cycle is set to 1 year in all cases (```externForcingCycle=31536000``` and ```externForcingCycle_cheap=31536000```), and the repeat period to 5 days (6 hours) for the obcs (cheapaml), i.e. ```externForcingPeriod=432000``` in ```data``` (```externForcingPeriod_cheap=21600``` in ```data.cheapaml```).
 
+- There is 2 versions of CheapAML namelist because a issue on the periodic boundary conditions was present in the original code and has contaminated the 10 first years of simulation. ```data.cheapaml_bug``` is thus used before 1973, and ```data.cheapaml``` afterwards. This issue has been reproduced in all ensembles to avoid inconsistency in comparisons.
+
+## Getting the forcing files
+
+The forcing files (both surface and open boundary conditions) used to generate our ensemble are accessible at [http://ocean.fsu.edu/~qjamet/share/data_in/](http://ocean.fsu.edu/~qjamet/share/data_in/). It contains both realisitc forcing for each year (with the 2 extra time records discussed above), as well as the yearly repeating forcing (1963-2012 climatology for obcs and August 2003 - July 2004 normal year for the atmospheric fields).
 
 
 ## Reproducing an ensemble (ORAR)
