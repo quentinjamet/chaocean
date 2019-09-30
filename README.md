@@ -26,16 +26,17 @@ The 4 ensembles are referred to as:
 
 Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in ```./mk_config/```. 
 
-- Initial conditions: Derived from a perturbed ocean state at the end of the 5-years spin-up (more details below).
+- Initial conditions: The configuration is first spun-up for 5 years (1958-1963) from the ORCA12.L46-MJM88 initial conditions. Then, all ensembles are integrated forward in time for 50 years (1963-2012) with a 12-member ensemble strategy. The 12 initial conditions are common to all ensembles, and are meant to reflect the spread induced by the growth of small, dynamically consistent perturbations decorrelated at seasonal time scales (further details in ```[mk_config/](mk_config/)```.
 
-- Open boundaries: Derived from the 55-yr long, 1/12 global ocean configuration ORCA12.L46-MJM88; Applied every 5 days. 
+- Open boundaries: Oceanic velocities (U, V) and tracers (T, S) are restored with a 6 hours relaxation time scale toward oceanic state derived from the 55-year long 1/12 horizontal resolution ocean-only global configuration ORCA12.L46-MJM88. Open boundary conditions are applied every 5 days and linearly interpolated in between. 
 
-- Atmospheric forcing: Derived from DFS4.4 and DFS5.2 data set; Applied every 6 hours.
+- Atmospheric forcing: At the surface, the ocean model is coupled to the atmospheric boundary layer model CheapAML. Atmospheric surface temperature and relative humidity respond to ocean surface structures by exchanges computed according to the COARE3 flux formula, but are strongly restored toward prescribed values over land. Other variables (downward longwave and solar shortwave radiation, precipitations) are prescribed everywhere. Atmospheric reanalysis products used in CheapAML originate from the Drakkar forcing set (DFS4.4, Brodeau et al, 2010; Dussin et al, 2016). Pricipitations are from DFS5.2 due to better time resolution.
 
 
 ## Configuration files for MITgcm
 
-All these files are in the MITgcm directory. The sub-directories are for namelists (```input_*```) and associated code (```code_*```) (usual MITgcm configurations files). 
+All files needed to set up and run this configuration are provided in the ```[MITgcm/](MITgcm/)``` directory. Aside from usual MITgcm configurations files, this configuration uses the code provided in ```[code/](code/)```. Namelists are provided for each of the 4 ensemble in their associated directories. Bash script used at run time are provided in ```[bin/](bin/)```. Further informations and details are also provided there.
+
 
 ## Simulations
 
