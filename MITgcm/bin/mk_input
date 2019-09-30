@@ -1,0 +1,74 @@
+#!/bin/bash
+#-- Directories --
+dir_input='/glade/p/univ/ufsu0011/test_input'
+dir_data='http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12'
+
+#-- make all the directorues --
+mkdir -p $dir_input
+mkdir -p $dir_input/grid_12
+mkdir -p $dir_input/atm_cond_12
+mkdir -p $dir_input/bound_cond_12
+mkdir -p $dir_input/ini_cond_12
+
+#-- retrieve grid files --
+cd $dir_input/grid_12
+wget $dir_data/grid_12/dx.bin
+wget $dir_data/grid_12/dy.bin
+wget $dir_data/grid_12/dz.bin
+wget $dir_data/grid_12/topo.bin
+cd ../
+
+#-- retrieve atmospheric files --
+cd $dir_input/atm_cond_12
+for iyr in {1963..1963}; do
+  mkdir ${iyr}
+  cd ${iyr}
+  wget $dir_data/atm_cond_12/${iyr}/q2_${iyr}.box
+  wget $dir_data/atm_cond_12/${iyr}/t2_${iyr}.box
+  wget $dir_data/atm_cond_12/${iyr}/u10_${iyr}.box
+  wget $dir_data/atm_cond_12/${iyr}/v10_${iyr}.box
+  wget $dir_data/atm_cond_12/${iyr}/radlw_${iyr}.box
+  wget $dir_data/atm_cond_12/${iyr}/radsw_${iyr}.box
+  #- precipitation in DFS are climatological before 1977 -
+  if [ ${iyr} -le 1976 ]; then
+    wget $dir_data/atm_cond_12/precip_climExtd.box  
+  else
+    wget $dir_data/atm_cond_12/${iyr}/precip_${yr}.box  
+  fi
+  cd ../
+done
+cd ../
+
+#-- retrieve open boundary files --
+cd $dir_input/bound_cond_12
+for iyr in {1963..1963}; do
+  mkdir ${iyr}
+  cd ${iyr}
+  wget $dir_data/bound_cond_12/${iyr}/S_GIB_${iyr}.box    
+  wget $dir_data/bound_cond_12/${iyr}/uE_GIB_${iyr}.box
+  wget $dir_data/bound_cond_12/${iyr}/S_NORTH_${iyr}.box   
+  wget $dir_data/bound_cond_12/${iyr}/uE_NORTH_${iyr}.box
+  wget $dir_data/bound_cond_12/${iyr}/S_SOUTH_${iyr}.box  
+  wget $dir_data/bound_cond_12/${iyr}/U_SOUTH_${iyr}.box
+  wget $dir_data/bound_cond_12/${iyr}/T_GIB_${iyr}.box    
+  wget $dir_data/bound_cond_12/${iyr}/vN_GIB_${iyr}.box
+  wget $dir_data/bound_cond_12/${iyr}/T_NORTH_${iyr}.box  
+  wget $dir_data/bound_cond_12/${iyr}/vN_NORTH_${iyr}.box
+  wget $dir_data/bound_cond_12/${iyr}/T_SOUTH_${iyr}.box  
+  wget $dir_data/bound_cond_12/${iyr}/V_SOUTH_${iyr}.box
+  cd ../
+done 
+cd ../
+
+#-- retrieve initial conditions --
+cd $dir_input/ini_cond_12 
+  for iic in {00..00}; do
+  mkdir ic${iic}
+  cd ic${iic}
+  wget $dir_data/ini_cond_12/ic${iic}/pickup.0000946080.data  
+  wget $dir_data/ini_cond_12/ic${iic}/pickup.0000946080.meta  
+  wget $dir_data/ini_cond_12/ic${iic}/pickup_cheapaml.0000946080.data
+  wget $dir_data/ini_cond_12/ic${iic}/pickup_cheapaml.0000946080.meta
+  cd ../
+done
+cd ../

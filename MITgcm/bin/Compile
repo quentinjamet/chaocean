@@ -1,0 +1,17 @@
+#!/bin/bash
+#-- Root dir of the code and option files --
+# All of these is to update with particular plateform
+# The option file is system dependent and is likely to 
+# need updates for other plateforms
+dir_chao='/glade/u/home/qjamet/chaocean/'
+optfile='cheyenne_amd64_openmpi'
+
+# COMPILE
+mkdir ../build/
+cd ../build/
+$dir_chao/MITgcm/MITgcm-checkpoint66d/tools/genmake2 -rootdir=$dir_chao/MITgcm/MITgcm-checkpoint66d/ -mods=../code -mpi -optfile $dir_chao/MITgcm/MITgcm-checkpoint66d/tools/build_options/$optfile
+make depend
+#make -j 16	# this option might be used to speed up the compilation
+make 
+cd ../
+

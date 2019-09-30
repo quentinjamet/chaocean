@@ -8,7 +8,7 @@ Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheap
 
 ## MITgcm code: 
 
-The configuration has been made with the Checkpoint 66d of the MITgcm. Issued are likely to emerge with latter version due to model updates (particularly the cheapaml package). Following MITgcm 'Getting Started with MITgcm' instructions on the code manual ([http://mitgcm.org/documentation/](http://mitgcm.org/documentation/)), we provide the specific piece of code for this configuration in the ```./code/``` directory. For example, the ```package.conf``` file defines the different packages to be complied for this configuration:
+The configuration has been made with the Checkpoint 66d of the MITgcm. Issued are likely to emerge with latter version due to model updates (particularly the cheapaml package). Following MITgcm 'Getting Started with MITgcm' instructions on the code manual ([https://doi.org/10.5281/zenodo.1409237](https://doi.org/10.5281/zenodo.1409237)), we provide the specific piece of code for this configuration in the ```./code/``` directory. For example, the ```package.conf``` file defines the different packages to be complied for this configuration:
 
 ```
    gfd
@@ -43,13 +43,23 @@ The forcing files (both surface and open boundary conditions) used to generate o
 
 This lines are guidelines for recompiling the configuration used in this project, and run a test for 1 year of 1 of the members of the ORAR ensemble.
 
-1/ Clone the chaocean git repository
+- To start, get all about the chaocean project, i.e. clone the git repository where you will compile the code, and download the 66c MITgcm chekpoint in the chaocean directory (you can remove the verification directory which)
 
-Bash scripts provided for the ensemble [./orar/](./orar/) are example to reproduce a simulation. 
+```
+git clone https://github.com/quentinjamet/chaocean.git
+cd ./chaocean/MITgcm/
+wget https://github.com/MITgcm/MITgcm/archive/checkpoint66d.zip
+unzip MITgcm
+rm -rf MITgcm-checkpoint66d/verification/
+```
+- Compile the code. Update the ```Compile``` bash script with appropriate root directory and option file. The provided example is made to run on Cheyenne under a testing directory.
 
-- ```run.sh```: script to submit to the supercomputer bash scheduler (PBS for Cheyenne)
+```
+cd ./bin/
+./Compile
+cd ../
+```
 
-- ```pc.vars```: additional namelist for setting up the appropriate path and bash variables
+At this stage, the configuration should have compiled, and a ```mitgcmuv``` executable should be present in the ```./chaocean/MITgcm/build/``` directory. If this is not the case, I am affraied something went wrong ...
 
-- ```./bin/```: Directory with several other scripts called by ```run.sh``` 
-- 
+- Retrieve initial conditions, grid and forcing files for memb00 and the year 1963 as an eample. These data set is potentially heavy and should be placed on a dedicated disk space. The bash script ```mk_input```  is an example ofi how to retrieve those data for the year 1963 and memb00.
