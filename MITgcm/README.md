@@ -8,7 +8,7 @@ Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheap
 
 ## MITgcm code: 
 
-The configuration has been made with the Checkpoint 66d of the MITgcm. Issued are likely to emerge with latter version due to model updates (particularly the cheapaml package). Following MITgcm 'Getting Started with MITgcm' instructions on the code manual (...), we provide the specific piece of code for this configuration in the ```./code/``` directory. The content of the ```package.conf``` file list the different packages used:
+The configuration has been made with the Checkpoint 66d of the MITgcm. Issued are likely to emerge with latter version due to model updates (particularly the cheapaml package). Following MITgcm 'Getting Started with MITgcm' instructions on the code manual (...), we provide the specific piece of code for this configuration in the ```./code/``` directory. For example, the ```package.conf``` file defines the different packages to be complied for this configuration:
 
 ```
    gfd
