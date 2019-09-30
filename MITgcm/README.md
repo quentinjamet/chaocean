@@ -27,7 +27,7 @@ Namelists common to all ensembles are provided in the ```./input/``` directory. 
 
 Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Two points here:
 
-- Using realistic forcing: In ensembles exposed to realistic open boundary conditions (ORAR and ORAC), ```useYearlyField=.TRUE.``` in ```data``` (```=.FALSE``` for the 2 other ensembles). Same, In ensembles exposed to realistic surface forcing (ORAR and OCAR), ```useYearlyField_cheap=.TRUE.``` in ```data.cheapaml``` (```=.FALSE.``` for the two other ensembles). 
+- In the ensembles exposed to realistic open boundary conditions (ORAR and ORAC), ```useYearlyField``` is set to ```.TRUE.``` in the ```data``` namelist (```=.FALSE``` for the 2 other ensembles). Same, In ensembles exposed to realistic surface forcing (ORAR and OCAR), ```useYearlyField_cheap``` is set tot ```.TRUE.``` in the ```data.cheapaml``` namelist (```=.FALSE.``` for the two other ensembles). 
 
 - The repeat cycle is set to 1 year in all cases (```externForcingCycle=31536000``` and ```externForcingCycle_cheap=31536000```), and the repeat period to 5 days (6 hours) for the obcs (cheapaml), i.e. ```externForcingPeriod=432000``` in ```data``` (```externForcingPeriod_cheap=21600``` in ```data.cheapaml```).
 
