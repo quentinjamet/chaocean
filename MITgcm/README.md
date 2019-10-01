@@ -39,18 +39,17 @@ Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, an
 The forcing files (both surface and open boundary conditions) used to generate our ensemble are accessible at [http://ocean.fsu.edu/~qjamet/share/data_in/](http://ocean.fsu.edu/~qjamet/share/data_in/). It contains both realisitc forcing for each year (with the 2 extra time records discussed above), as well as the yearly repeating forcing (1963-2012 climatology for obcs and August 2003 - July 2004 normal year for the atmospheric fields).
 
 
-## Reproducing the configuration 
+## Prepare the configuration for re-running
 
-This lines are guidelines for recompiling the configuration used in this project, and run a test for 1 year of 1 of the members of the ORAR ensemble.
+This lines are guidelines for recompiling the configuration used in this project, and retrieve necessary files for re-running it for 1 year (1963), 1 member (memb00) of the realistic (ORAR) ensemble.
 
-- To start, get all about the chaocean project, i.e. clone the git repository where you will compile the code, and download the 66c MITgcm chekpoint in the chaocean directory (you can remove the verification directory which)
+- To start, get all about the chaocean project, i.e. clone the git repository where you will compile the code, and download the 66c MITgcm chekpoint in the chaocean directory.
 
 ```
 git clone https://github.com/quentinjamet/chaocean.git
 cd ./chaocean/MITgcm/
 wget https://github.com/MITgcm/MITgcm/archive/checkpoint66d.zip
 unzip MITgcm
-rm -rf MITgcm-checkpoint66d/verification/
 ```
 - Compile the code. Update the ```Compile``` bash script with appropriate root directory and option file. The provided example is made to run on Cheyenne under a testing directory.
 ```
@@ -60,4 +59,46 @@ cd ../
 ```
 At this stage, the configuration should have compiled, and a ```mitgcmuv``` executable should be present in the ```./chaocean/MITgcm/build/``` directory. If this is not the case, I am affraied something went wrong ...
 
-- Retrieve initial conditions, grid and forcing files for memb00 and the year 1963 as an eample. These data set is potentially heavy and should be placed on a dedicated disk space. The bash script ```mk_input```  is an example of how to proceed.
+- Retrieve initial conditions, grid and forcing files. These data set is potentially heavy and should be placed on a dedicated disk space. The bash script ```mkinput``` (in the  ```./bin/``` directory)  is an example of how to proceed for memb00 ORAR simulation for the year 1963.
+
+
+## Re-run the configuration
+
+We provide here an example of how to re-run the configuration for year 1963 of memb00 of the realisitic ensemble (ORAR). In ```./MITgcm/orar/memb00/``` are examples of two main bash scripts used to run the configuration, i.e. ```pc.vars``` and ```run.sh```. The former contains run-time parameters detailed below:
+```
+confName=orar						-> name of the ensemble
+confDir=/glade/p/work/qjamet/Config/chao12/orar		-> current directory
+inDir=/glade/p/ufsu0011/data_in				-> where input (grid, forcing, ic) files are stored
+runDir=/glade/scratch/qjamet/tmp_running/orar		-> where the model will run (scratch usually)
+outDir=/glade/p/ufsu0011/runs/orar			-> where the data will be moved at the end of the simulation
+scrDir=/glade/p/work/qjamet/Config/bin			-> ./bin/ directory
+monitor=report.txt					-> simulation report file
+mem_nb=00						-> # of the member (used of ICs)
+period=1963						-> year to run
+iit=788400						-> initial iteration
+fit=8672400						-> final iteration (50 years here) 
+nit=157680						-> nb of iterations to run (1 year here)
+pChkptFreq=31536000.					-> permanent pickups frequency (sec, 1 year)
+chkptFreq=6307200.					-> rolling pickups frequency (sec, for restart if model cracg)
+dumpFreq=0.						-> frequency of snapshots diagnostics
+exe=mitgcmuv						-> name of the compiled executable
+dt=200							-> model time step
+```
+
+Thus, the model is run by submitting the ```run.sh``` bash script to the job scheduler of the plateform used (PBS in the case of this example). This ```run.sh``` scripts deals with several steps, such as:
+
+- preparing the directory where the model will be run
+
+- set the contain of the ```data``` namelist according to the simulated year
+
+- making appropriate links to grid, initial conditions and forcing files (through the ```mklink``` script located in ```./bin/```)
+
+- run the model. This is done here with ```mpiexec_mpt``` but is plateform-dependent.
+
+- Move the data at the end of the simulation where it will be stored (through the ```movedata``` script in ```./bin/```)
+
+- Reset ```data``` namelist for next run
+
+- resubmit itself through ```$SUBMIT  run.sh```, where ```$SUBMIT``` is defined at the top of the ```run.sh``` and is plateform-dependent.
+
+

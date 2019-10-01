@@ -1,4 +1,8 @@
 #!/bin/bash
+#-----------------------------------------------------------------------------#
+#	Job scheduler header                                                  #
+#	Need to be updated with appropriate plateform scheduler	              #
+#-----------------------------------------------------------------------------#
 ### Job Name
 #PBS -N orar_mem00
 ### Project code
@@ -12,7 +16,6 @@
 #PBS -M qjamet@fsu.edu
 
 # export the qsub command into the bash script to make auto-resubmission
-# !!!!! This is plateform dependent !!!!!!
 export SUBMIT=/opt/pbs/default/bin/qsub
 
 #-----------------------------------------------------------------------------#
@@ -44,11 +47,11 @@ sit=$(($iit+$nit))
 iit0=`$scrDir/add0upto10c $iit`
 sit0=`$scrDir/add0upto10c $sit`
 
-echo "=================================="             > $monitor
+echo "=================================="             >  $monitor
 echo "Actual start time, of script:   "`date`         >> $monitor
 echo "Configuration directory:        "$confDir       >> $monitor
 echo "Simulation directory:           "$runDir2       >> $monitor
-echo "Storage directory:              "$outDir       >> $monitor
+echo "Storage directory:              "$outDir        >> $monitor
 echo "Period:                         "$period        >> $monitor
 echo "Member number:                  "$mem_nb        >> $monitor
 echo "--- Current iteration period ---  "             >> $monitor
@@ -65,7 +68,7 @@ echo "=================================="             >> $monitor
 . $scrDir/setdata $confDir/memb$mem_nb $iit $nit $pChkptFreq \
                   $chkptFreq $dumpFreq
 
-. $scrDir/mklink2 $runDir2 $confName $confDir $inDir $period $mem_nb $exe \
+. $scrDir/mklink $runDir2 $confName $confDir $inDir $period $mem_nb $exe \
                   $iit $iit0 $outDir $monitor
 
 #-----------------------------------------------#
@@ -80,25 +83,25 @@ mpiexec_mpt dplace -s 1 ./$exe
 echo "executable name:        "$exe         >> $confDir/memb${mem_nb}/$monitor
 
 status=$?
-echo "Ended with status:  "$status   >> $confDir/memb${mem_nb}/$monitor
+echo "Ended with status:  "$status          >> $confDir/memb${mem_nb}/$monitor
 
 if test -f $runDir2/T.$sit0.meta; then
- echo "... "			       >> $confDir/memb${mem_nb}/$monitor
- echo "Model run fine. Go ahead "      >> $confDir/memb${mem_nb}/$monitor
- echo "=================================="   >> $confDir/memb${mem_nb}/$monitor
+ echo "... "			            >> $confDir/memb${mem_nb}/$monitor
+ echo "Model run fine. Go ahead "           >> $confDir/memb${mem_nb}/$monitor
+ echo "=================================="  >> $confDir/memb${mem_nb}/$monitor
 else
- echo "... "			       >> $confDir/memb${mem_nb}/$monitor
- echo "Model crashed. Stop  "	       >> $confDir/memb${mem_nb}/$monitor
- echo "=================================="   >> $confDir/memb${mem_nb}/$monitor
+ echo "... "			            >> $confDir/memb${mem_nb}/$monitor
+ echo "Model crashed. Stop  "	            >> $confDir/memb${mem_nb}/$monitor
+ echo "=================================="  >> $confDir/memb${mem_nb}/$monitor
  exit
 fi
 
 # check for NaN
 nan=$(grep NaN STDOUT.0000 | wc -l)
 if [ $nan -ge 1 ]; then
- echo "... "			       >> $confDir/memb${mem_nb}/$monitor
- echo "Model nans ...   "	       >> $confDir/memb${mem_nb}/$monitor
- echo "=================================="   >> $confDir/memb${mem_nb}/$monitor
+ echo "... "			            >> $confDir/memb${mem_nb}/$monitor
+ echo "Model nans ...   "	            >> $confDir/memb${mem_nb}/$monitor
+ echo "=================================="  >> $confDir/memb${mem_nb}/$monitor
  exit
 fi
 
@@ -142,5 +145,5 @@ fi
 
 
 #-- resubmit the model --
-$SUBMIT  run.sh
+#$SUBMIT  run.sh
 
