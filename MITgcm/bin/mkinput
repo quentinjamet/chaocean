@@ -1,16 +1,36 @@
 #!/bin/bash
-#-- Directories --
+
+#------------------------------
+#-- make all the directorues --
+#------------------------------
+echo '1/ Make directories'
+echo '-------------------'
+echo '  '
+
+#- define -
 dir_input='/glade/p/univ/ufsu0011/test_input'
 dir_data='http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12'
+if [ ! -d ${dir_input} ]; then
+ echo 'Directory where data will be stored does not exist,'
+ echo 'please define an appropriate directory.'
+ echo 'Current dir_input:'
+ echo '     ' ${dir_input}
+ exit
+else
+ 
 
-#-- make all the directorues --
 mkdir -p $dir_input
 mkdir -p $dir_input/grid_12
 mkdir -p $dir_input/atm_cond_12
 mkdir -p $dir_input/bound_cond_12
 mkdir -p $dir_input/ini_cond_12
 
+#-------------------------
 #-- retrieve grid files --
+#-------------------------
+echo '2/ Get grid files'
+echo '-----------------'
+echo '  '
 cd $dir_input/grid_12
 wget $dir_data/grid_12/dx.bin
 wget $dir_data/grid_12/dy.bin
@@ -18,7 +38,12 @@ wget $dir_data/grid_12/dz.bin
 wget $dir_data/grid_12/topo.bin
 cd ../
 
+#--------------------------------
 #-- retrieve atmospheric files --
+#--------------------------------
+echo '3/ Get atmospheric forcing files'
+echo '--------------------------------'
+echo '  '
 cd $dir_input/atm_cond_12
 for iyr in {1963..1963}; do
   mkdir ${iyr}
@@ -39,7 +64,12 @@ for iyr in {1963..1963}; do
 done
 cd ../
 
+#----------------------------------
 #-- retrieve open boundary files --
+#----------------------------------
+echo '4/ Get open boundary conditions'
+echo '-------------------------------'
+echo '  '
 cd $dir_input/bound_cond_12
 for iyr in {1963..1963}; do
   mkdir ${iyr}
@@ -60,7 +90,12 @@ for iyr in {1963..1963}; do
 done 
 cd ../
 
+#---------------------------------
 #-- retrieve initial conditions --
+#---------------------------------
+echo '5/ Get initial conditions'
+echo '-------------------------'
+echo '  '
 cd $dir_input/ini_cond_12 
   for iic in {00..00}; do
   mkdir ic${iic}
