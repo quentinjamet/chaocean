@@ -134,7 +134,7 @@ fi
 
 echo "------------ pickup files -------------"		>> $monitor
 if [ $period -eq 1963 ] ; then
- icDir=${inDir}/ini_cond_12/ensemble_ic/ic${mem_nb}
+ icDir=${inDir}/ini_cond_12/ic${mem_nb}
  echo "Link ensemble ICs from:"                     >> $monitor
  echo ${icDir}                                      >> $monitor
  echo "-----------------------------"               >> $monitor

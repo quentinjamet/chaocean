@@ -1,0 +1,35 @@
+==================================
+Actual start time, of script:   Thu Oct 3 06:04:16 MDT 2019
+Configuration directory:        /glade/u/home/qjamet/chaocean/MITgcm
+Simulation directory:           /glade/scratch/qjamet/test_running/orar/memb00
+Storage directory:              /glade/p/ufsu0011/test_output
+Period:                         1963
+Member number:                  00
+--- Current iteration period ---  
+    iterSTART                  :788400
+    iterSTEP                   :157680
+    iterSTOP                   :946080
+Overall FINAL iteration:       :8672400
+==================================
+data.cheapaml from ./memb:  00
+------------ OBCS -------------
+real forcing from:
+/glade/p/univ/ufsu0011/test_input/bound_cond_12
+------------ cheapAML -------------
+real forcing from:
+/glade/p/univ/ufsu0011/test_input/atm_cond_12
+------------ pickup files -------------
+Link ensemble ICs from:
+/glade/p/univ/ufsu0011/test_input/ini_cond_12/ensemble_ic/ic00
+-----------------------------
+data.cheapaml from ./memb:  00
+------------ OBCS -------------
+real forcing from:
+/glade/p/univ/ufsu0011/test_input/bound_cond_12
+------------ cheapAML -------------
+real forcing from:
+/glade/p/univ/ufsu0011/test_input/atm_cond_12
+------------ pickup files -------------
+Link ensemble ICs from:
+/glade/p/univ/ufsu0011/test_input/ini_cond_12/ic00
+-----------------------------
