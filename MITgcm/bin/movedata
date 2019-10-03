@@ -10,7 +10,7 @@ confName=$6
 
 # -- local parameters --
 report=MoveReport.txt
-tmpDir=${outDir}/memb${mem_nb}
+tmpDir=${outDir}/${confName}/memb${mem_nb}
 
 # -- sanity check --
 echo "Actual start time of script : "`date`       > $report
@@ -40,18 +40,6 @@ mkdir -p $cheapDir;   chmod a+rx $cheapDir
 echo "Move ocean data to : "                           >> $report 
 echo "--  " $ocnDataDir                                >> $report 
 mv $runDir/diag_ocn* 			$ocnDataDir    
-if [ $mem_nb -eq 00 ] && [ $confName = orar ] ; then
- mv $runDir/T.*  			$ocnDataDir    
- mv $runDir/S.*  			$ocnDataDir    
- mv $runDir/U.*  			$ocnDataDir    
- mv $runDir/V.*  			$ocnDataDir    
- mv $runDir/W.*  			$ocnDataDir    
- mv $runDir/Eta.*  			$ocnDataDir    
-fi
-if [ $mem_nb = 23 ] && [ $confName = orar ] ; then
- mv $runDir/diagKEs.*			$ocnDataDir
- mv $runDir/tracer_wb.*			$ocnDataDir
-fi
 #-- pickups --
 mv $runDir/pickup.$sit0.*               $ocnDataDir    
 echo "--------------------- "                          >> $report 
@@ -63,9 +51,6 @@ echo "--------------------- "                          >> $report
 echo "Move cheapAML data to :"                         >> $report 
 echo "--  " $cheapDir                                  >> $report 
 mv $runDir/diag_cheapAML.* 		$cheapDir    
-if [ $mem_nb -eq 00 ] && [ $confName = orar ] ; then 
- mv $runDir/snap_cheapAML.* 		$cheapDir     
-fi
 #-- pickups --
 mv $runDir/pickup_cheapaml.$sit0.*      $cheapDir    
 echo "--------------------- "                          >> $report 

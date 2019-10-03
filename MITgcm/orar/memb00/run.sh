@@ -34,9 +34,9 @@ if [ ! -d $runDir ]; then
  echo "run directory does not exist"$runDir > $monitor
  exit
 else
- runDir2=$runDir/memb${mem_nb}
+ runDir2=$runDir/${confName}/memb${mem_nb}
  if [ ! -d $runDir2 ]; then
-  mkdir $runDir2
+  mkdir -p $runDir2
  else
   rm -rf $runDir2/*
  fi

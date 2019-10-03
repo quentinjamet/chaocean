@@ -85,7 +85,7 @@ exe=mitgcmuv						-> name of the compiled executable
 dt=200							-> model time step
 ```
 
-Thus, the model is run by submitting the ```run.sh``` bash script to the job scheduler of the plateform used (PBS in the case of this example). This ```run.sh``` scripts deals with several steps, such as:
+Thus, the model is run by submitting the ```run.sh``` bash script to the job scheduler of the plateform used (PBS in the case of this example). This ```run.sh``` scripts deals with several steps:
 
 - preparing the directory where the model will be run
 
