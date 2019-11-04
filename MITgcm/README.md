@@ -4,7 +4,7 @@ We provide here all the necessary informations to compile and run the simulation
 
 
 
-Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheapaml) are ensembler-dependent and are thus provided with their associated ensemble.
+Compiled with the Checkpoint 66d of the MITgcm. Some namelists (data, data.cheapaml) are ensemble-dependent and are thus provided with their associated ensemble.
 
 ## MITgcm code: 
 
