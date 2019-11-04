@@ -14,13 +14,15 @@ For this project, we set up an eddy-resolving (1/12) ocean regional configuratio
 
 The 4 ensembles are referred to as:
 
-|                       | Fully varying atm  | Yearly repeating atm  |
-|-----------------------|--------------------|-----------------------|
-| Fully varying OBCS    |       ORAR         |        ORAC           |
-| Yearly repeating OBCS |       OCAR         |        OCAC           |
+|                                 | Fully varying atmosphere  | Yearly repeating atmosphere  |
+|---------------------------------|---------------------------|------------------------------|
+| Fully varying Open Boundaries   |       ORAR                |        ORAC                  |
+| Yearly repeating Open Boundaries|       OCAR                |        OCAC                  |
 
 
-- (27/09/2019) The ensemble ORAR has been extend to 24 members (see ... for details on new ICs).
+- (27/09/2019) The ensemble ORAR has been extended to 24 members (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
+
+- (04/11/2019) The ensemble OCAC has been extended to 24 members with 12 new Macri Initial conditions (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
 
 ## Initial conditions, open boundaries and atmospheric forcing
 
