@@ -26,7 +26,7 @@ Most important modifications of the original code concern the way input files ar
 
 Namelists common to all ensembles are provided in the ```./input/``` directory. This are run time parameters used for the simulations, where prescription of open boundary conditions (```data.obcs```) and model outputs (```data.diagnostics```) are for instance made. 
 
-Namelists ```data``` and CheapAML ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Three points here:
+Namelists ```data``` and ```data.cheapaml``` are ensemble-dependent, and thus placed in the appropriate directory. Three points here:
 
 - In the ensembles exposed to realistic open boundary conditions (ORAR and ORAC), ```useYearlyField``` is set to ```.TRUE.``` in the ```data``` namelist (```=.FALSE``` for the 2 other ensembles). Same, In ensembles exposed to realistic surface forcing (ORAR and OCAR), ```useYearlyField_cheap``` is set tot ```.TRUE.``` in the ```data.cheapaml``` namelist (```=.FALSE.``` for the two other ensembles). 
 
@@ -57,7 +57,7 @@ cd ./bin/
 ./Compile
 cd ../
 ```
-At this stage, the configuration should have compiled, and a ```mitgcmuv``` executable should be present in the ```./chaocean/MITgcm/build/``` directory. If this is not the case, I am affraied something went wrong ...
+At this stage, the configuration should have compiled, and a ```mitgcmuv``` executable should be present in the ```./chaocean/MITgcm/build/``` directory. If this is not the case, I am affraid something went wrong ...
 
 - Retrieve initial conditions, grid and forcing files. These data set is potentially heavy and should be placed on a dedicated disk space. The bash script ```mkinput``` (in the  ```./bin/``` directory)  is an example of how to proceed for memb00 ORAR simulation for the year 1963.
 
@@ -89,15 +89,15 @@ Thus, the model is run by submitting the ```run.sh``` bash script to the job sch
 
 - preparing the directory where the model will be run
 
-- set the contain of the ```data``` namelist according to the simulated year
+- set the content of the ```data``` namelist according to the simulated year
 
 - making appropriate links to grid, initial conditions and forcing files (through the ```mklink``` script located in ```./bin/```)
 
 - run the model. This is done here with ```mpiexec_mpt``` but is plateform-dependent.
 
-- Move the data at the end of the simulation where it will be stored (through the ```movedata``` script in ```./bin/```)
+- move the data at the end of the simulation where it will be stored (through the ```movedata``` script in ```./bin/```)
 
-- Reset ```data``` namelist for next run
+- reset ```data``` namelist for next run
 
 - resubmit itself through ```$SUBMIT  run.sh```, where ```$SUBMIT``` is defined at the top of the ```run.sh``` and is plateform-dependent.
 
