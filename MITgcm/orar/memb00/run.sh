@@ -31,12 +31,12 @@ source pc.vars
 #-- make the run directory (all files will be linked there) --
 # usually on a scratch disk
 if [ ! -d $runDir ]; then
- echo "run directory does not exist"$runDir > $monitor
+ echo "run directory does not exist: "$runDir > $monitor
  exit
 else
- runDir2=$runDir/memb${mem_nb}
+ runDir2=$runDir/${confName}/memb${mem_nb}
  if [ ! -d $runDir2 ]; then
-  mkdir $runDir2
+  mkdir -p $runDir2
  else
   rm -rf $runDir2/*
  fi
@@ -65,7 +65,7 @@ echo "=================================="             >> $monitor
 #     - Set data files for first iteration period                             #
 #	and make grid, OBCS, cheapAML and pickup links
 #-----------------------------------------------------------------------------#
-. $scrDir/setdata $confDir/memb$mem_nb $iit $nit $pChkptFreq \
+. $scrDir/setdata $confDir/${confName}/memb$mem_nb $iit $nit $pChkptFreq \
                   $chkptFreq $dumpFreq
 
 . $scrDir/mklink $runDir2 $confName $confDir $inDir $period $mem_nb $exe \
@@ -117,14 +117,14 @@ else echo "No Ocn pickup:  "$pick ; exit; fi
 #-- move data for storage, including pickup files --
 . ${scrDir}/movedata2 $runDir2 $outDir $period $sit0 $mem_nb $confName
 
-mv $confDir/memb${mem_nb}/$monitor ${outDir}/memb${mem_nb}/run${period}/$monitor
+mv $confDir/${confName}/memb${mem_nb}/$monitor \
+	 ${outDir}/${confName}/memb${mem_nb}/run${period}/$monitor
 
 #-----------------------------------------------------------------------------#
 #                      Reset model parameters                                 #
 #-----------------------------------------------------------------------------#
 #-- back to config directory --
 cd $confDir/memb${mem_nb}
-rm -rf orar_mem${mem_nb}.*
 
 source pc.vars
 iit=$sit
