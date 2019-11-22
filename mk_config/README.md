@@ -2,7 +2,7 @@
 
 ## Scripts used to make the configuration and generate forcing files
 
-The set of DFS data used to generate atmospheric conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/), the original ORCA12.L46-MJM88 data used to generate boundary conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_datai/), and the topography data (also from the ORCA12.L46-MJM88) are in [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/grid_12/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/grid_12//). The scripts bellow are examples of how to generate forcing files for the configuration from those data sets, and need to be adapted to specific needs. 
+The set of DFS data used to generate atmospheric conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/), the original ORCA12.L46-MJM88 data used to generate boundary conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_datai/), and the topography data (also from ORCA12.L46-MJM88) are in [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/grid_12/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/grid_12//). The scripts bellow are examples of how to generate forcing files for the configuration from those data sets, and need to be adapted to specific needs. 
 
 - ```mk_grid.m```: Make the grid and bathy files used to initiate the simulation. 
 
