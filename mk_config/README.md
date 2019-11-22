@@ -2,7 +2,7 @@
 
 ## Scripts used to make the configuration and generate forcing files
 
-Path used in those scripts need to be updated to specific use.
+Path used in those scripts need to be updated to specific use. The set of DFS data used to generate atmospheric conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/), and the original ORCA12.L46-MJM88 data used to generate boundary conditions are available at [http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/](http://ocean.fsu.edu/~qjamet/share/data/data_in_chao12/atm_data/). The scripts bellow are examples of how to generate forcing files for the configuration from those data sets. 
 
 - ```mk_grid.m```: Make the grid and bathy files used to initiate the simulation. 
 
@@ -12,7 +12,7 @@ Path used in those scripts need to be updated to specific use.
 
 - ```mk_atmFlx.m```: Interpolate DFS atmospheric forcing fields on the model grid.
 
-( - ```mk_precip.m```: Make precipitations separatly)
+- ```mk_precip.m```: Precipitations are made separatly because from another dataset
 
 - ```mk_obcsFlx.m```: Interpolate ORCA12.L46-MJM88 U, V, T, S on the boundaries (North (55N), South (20S) and at the Strait of Gibraltar) of the domain.
 
