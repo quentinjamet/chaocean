@@ -226,6 +226,5 @@ end % iiYear
 
 end % iiVar
 
-fprintf('atm pts: %i !!!\n',iit);
 
 
