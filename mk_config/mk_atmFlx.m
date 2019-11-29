@@ -28,20 +28,15 @@ addpath('/tank/users/qjamet/MatLab/mk_Config/')
 %------------
 
 %- output dir -
-%dir_o = '/tank/users/qjamet/MatLab/Test_flx/';
-%dir_o = '/tank/chaocean/atmospheric_conditions_12/';
-%dir_o = '/tank/chaocean/qjamet/Config/Test_cheapAML0.25/run_cheapAML/input/';
 dir_o = '/tank/chaocean/qjamet/Config/Test_cheapAML0.25/data_in/atm_cd/';
 
 %- atmospheric data -
-dir_atm = '/tank/chaocean/atmospheric_data/DFS4.4_NorthAtl/';
+dir_atm1 = '/tank/chaocean/atmospheric_data/DFS4.4_NorthAtl/';
 dir_atm2= '/tank/chaocean/atmospheric_data/DFS5.2_NorthAtl/';
 
-dfs = '_DFS4.4_y';
+dfs1 = '_DFS4.4_y';
 dfs2 = '_DFS5.2_y';
 
-%- climatological atm fluxes -
-dir_clim = '/tank/chaocean/climatologies/';
 
 %------------------
 % Specific flags
@@ -54,10 +49,6 @@ flg_cut = 0;
 flag_interp = 0; % 1: matlab original interpolation (slower), 0: mygriddata
 flag_plot = 0;
 flag_save = 1;
-flag_clim = 0;  %1: climatological fluxes on the chaocean grid; 0: fully forced fluxes
-
-
-
 
 
 %---------------------------
@@ -71,10 +62,7 @@ mk_grid(4,0,flg_cut)
 %-------------
 % Set of field 
 %-------------
-%var = {'t2','q2','u10','v10','radlw','radsw'};
-var = {'precip'};
-%var = {'radlw','radsw'};
-%var = {'t2','q2'};
+var = {'t2','q2','u10','v10','radlw','radsw','precip'};
 
 %-- loop over variables --
 for iiVar = 1:length(var)
@@ -83,6 +71,9 @@ disp(['Variable: ' var{iiVar}])
 if strcmp(var{iiVar},'precip')
   dir_atm = dir_atm2;
   dfs = dfs2;
+else
+  dir_atm = dir_atm1;
+  dfs = dfs1;
 end
 
 %-- Get dimension of inputs --
@@ -109,100 +100,12 @@ fprintf('Creating new interpolant\n')
 end  
 
 
-
-
-if flag_clim
-%===========================================
-% Climatological atmospheric fluxes
-%===========================================
-
-disp('-------------------------')  
-fprintf('Building climatological atmospheric files \n');
-disp('-------------------------')  
-
-
-%- load data file -
-if strcmp(var{iiVar},'radlw') | strcmp(var{iiVar},'radsw')
-  fid = fopen([dir_clim var{iiVar} '_climatology_6hr_DFS4.4'],'r',ieee);
-  tmpdata = fread(fid,accuracy);
-else
-  fid = fopen([dir_clim var{iiVar} '_climatology_DFS4.4'],'r',ieee);
-  tmpdata = fread(fid,'real*8');
-end
-nLon = tmpdata(1); %same as nx_atm
-nLat = tmpdata(2); %same as ny_atm
-nTime = tmpdata(3);
-
-%- reshape incoming variable -
-data = reshape(tmpdata(4:end),[nx_atm ny_atm nTime]);
-clear tmpdata
-if strcmp(var{iiVar},'t2')
-  data = data - 273.16; %convert 't2' into degC
-end
-
-
-
-%-------------------------------
-% Interpolate onto the new grid
-%-------------------------------
-
-%-- Initialization --
-data_MIT = zeros([size(xLon) nTime]);
-
-%-- loop over time step for interpolation --
-for iit=1:nTime
-
-  %- interpolation on the new grid -
-  % cubic for u and v for cheapaml precip field
-  if strcmp(var{iiVar},'u10') | strcmp(var{iiVar},'v10')
-    data_MIT(:,:,iit) = griddata(yLat_atm,xLon_atm,data(:,:,iit),yLat,xLon,'cubic');
-  else  % linear for tair and qair
-    if flag_interp
-      data_MIT(:,:,iit) = griddata(xLon_atm,yLat_atm,data(:,:,iit),xLon,yLat);
-    else
-      data_MIT(:,:,iit) = my_griddata2(xLon_atm,yLat_atm,data(:,:,iit),xLon,yLat,tri,wei);
-    end
-  end
-
-  %-- rearrange on the reshaped grid --
-  if flg_cut
-    tmpDATA = zeros([size(mask_mit) nTime]);
-    for iit=1:nTime
-      tmpDATA(:,:,iit) = cut_gulf(data_MIT(:,:,iit),mask_mit,x_cut,2,ybc);
-    end
-    data_MIT = tmpDATA;
-  end % flg_cut
-  
-end% itt=1:nTime
-
-
-
-
-
-%------------------
-%	SAVE
-%------------------
-
-if flag_save
-  fid=fopen([dir_o var{iiVar} '_clim.box'] ,'w',ieee); fwrite(fid,data_MIT,accuracy); fclose(fid);
-end
-
-
-
-%===========================================
-% Fully forced atmospheric fluxes
-%===========================================
-else
-
 disp('-------------------------')  
 fprintf('Building fully forced atmospheric files \n');
 disp('-------------------------')  
 
-
-
 %-- Loop over years --
-for iiYear = 2003:2004
-%for iiYear = 1987:1987
+for iiYear = 1963:2012
 
 fprintf('Year: %i\n', iiYear)
 
@@ -250,10 +153,9 @@ for iit=1:nt_atm
 end %iit
 
 
-%-- time interpolation (daily -> 6-hr) for radLW and radSW --
-%-- made of 0 at 6h and 24h and double value at 12h and 18h --
-%-- the linear interpolation performed by the MITgcm better conserves the int --
-%-- for such 6-hr data than for daily data --
+%-- the extrapolation for radsw from daily to  6-hr field --
+%-- is made as 0 at 6h and 24h and double value at 12h and 18h --
+%-- extrapolation for radlw and precip is standard --
 
 if strcmp(var{iiVar},'radsw') | strcmp(var{iiVar},'radlw') | strcmp(var{iiVar},'precip')
 
@@ -326,5 +228,4 @@ end % iiVar
 
 fprintf('atm pts: %i !!!\n',iit);
 
-end %if flag_clim
 
