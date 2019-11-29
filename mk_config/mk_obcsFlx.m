@@ -15,7 +15,7 @@
 
 clear all; close all
 
-
+addpath('/tank/chaocean/MITgcm/utils/matlab/')
 
 %------------
 % Directories
@@ -23,10 +23,12 @@ clear all; close all
 
 %- output dir -
 dir_o = '/tank/chaocean/boundary_conditions_12/';
-%dir_o = '/tank/chaocean/qjamet/Config/Test_cheapAML0.25/';
 
 %- Boundary conditions data -
 dir_obcs = '/tank/chaocean/boundary_data/';
+
+%- grid parameters directory -
+dirGrd = '/tank/chaocean/grid_chaO/gridMIT/';
 
 
 %------------------
@@ -38,7 +40,7 @@ accuracy='real*4';
 
 flg_cut = 1;
 flag_save = 1;
-flag_bdy = 'GIB';	%'NORTH' or 'SOUTH'  depending on the boundary considered
+flag_bdy = 'GIB';	%'NORTH', 'SOUTH' of 'GIB'  depending on the boundary considered
 Resol = 12;
 
 
@@ -51,19 +53,9 @@ mk_grid(Resol,0,flg_cut)
 [nLon,nLat] = size(xLon);
 
 %-- load the land mask used by the MITgcm to field oceanic NaN points after interpolation --
-if Resol == 4
-  load('/tank/users/qjamet/MatLab/mk_Config/Mask025_3D.mat')
-  mskLnd = msk025_3D;
-else Resol == 12
-  load('/tank/users/qjamet/MatLab/mk_Config/Mask12_3D.mat')
-  mskLnd = msk12_3D;
-end
-if flg_cut == 1
-  msk2_mit = zeros(x_cut,nLat);
-  msk2_mit(1:nLon-x_cut,:) = mask_mit(x_cut+1:nLon,:);
-  mskLnd = cut_gulf_NaN(mskLnd,msk2_mit,nLon-x_cut,-1,0);
-  mskLnd(isnan(mskLnd)) = 0;
-end
+hFacC = rdmds([dirGrd 'hFacC']);
+mskLnd = cut_gulf_NaN(hFacC,-1,0);
+mskLnd(mskLnd ~= 0) = 1;
 
 
 %-- list of variables --
@@ -116,7 +108,6 @@ for iVar = 1:nVar
   %========================
   
   yYear = [1958:2012];
-%  yYear = [1958];
   nYr = length(yYear);
 
   for iiYr = 1:nYr
@@ -169,13 +160,7 @@ for iVar = 1:nVar
         case 'NORTH'
           jLat_bdy = nLat-1;         %Interpolate boundary conditions at
         case 'SOUTH'
-          if Resol == 4
-            jLat_bdy = 1;
-%            jLat_NEMO = 3;
-          else
-            jLat_bdy = 2;
-%            jLat_NEMO = 4;
-          end
+          jLat_bdy = 2;
         case 'GIB' 
           iLon_bdy = 1073;	% (1074,670:673) -> on land ; (1073,670:673) -> on sea
           iLon_NEMO = 6;
@@ -269,13 +254,9 @@ for iVar = 1:nVar
       if iiFile==1 
         fid = fopen([dir_o num2str(yYear(iiYr)) '/' var{iVar}  '_' flag_bdy '_' ...
             num2str(yYear(iiYr)) '.box'],'w',ieee);
-%        fid = fopen([dir_o var{iVar}  '_' flag_bdy '_' ...
-%            num2str(yYear(iiYr)) '.box'],'w',ieee);
       else
         fid = fopen([dir_o num2str(yYear(iiYr)) '/' var{iVar}  '_' flag_bdy '_' ...
             num2str(yYear(iiYr)) '.box'],'a',ieee);
-%        fid = fopen([dir_o var{iVar}  '_' flag_bdy '_' ...
-%            num2str(yYear(iiYr)) '.box'],'a',ieee);
       end %iiFile
       fwrite(fid,data_tmp,accuracy);
       fclose(fid);
