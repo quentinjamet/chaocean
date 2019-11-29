@@ -9,6 +9,7 @@
 clear all; close all
 
 addpath('/tank/users/qjamet/MatLab/mk_Config/')
+addpath('/tank/chaocean/MITgcm/utils/matlab/')
 
 
 %------------
@@ -17,13 +18,11 @@ addpath('/tank/users/qjamet/MatLab/mk_Config/')
 
 %- output dir -
 dir_o = '/tank/chaocean/initial_conditions_12/';
-%dir_o = '/tank/chaocean/qjamet/Config/Test_cheapAML0.25/run_CheapAML/input/';
 
 %- Initial conditions data -
 dir_ini = '/tank/chaocean/initial_data/1958/';
 
 %- grid parameters directory -
-%dirGrd = '/tank/chaocean/qjamet/RUNS/Test_cheapAML0.25/grid025/';
 dirGrd = '/tank/chaocean/grid_chaO/gridMIT/';
 
 %------------------
@@ -171,14 +170,9 @@ end %for iiZ
 if ~flag_uv
 
   %- load 3D mask generated with outputs of the MITgcm to get land grid points -
-  if nLat == 300		%1/4 degree
-    load('/tank/users/qjamet/MatLab/mk_Config/Mask025_3D.mat')
-    mskLnd = msk025_3D; 
-  elseif nLat == 900	%1/12 degree
-    load('/tank/users/qjamet/MatLab/mk_Config/Mask12_3D.mat')
-    mskLnd = cut_gulf_NaN(msk12_3D,-1,0);
-    mskLnd(mskLnd == 20) = 1;
-  end
+  hFacC = rdmds([dirGrd 'hFacC']);
+  mskLnd = cut_gulf_NaN(hFacC,-1,0);
+  mskLnd(mskLnd ~= 0) = 1;
 
   %- for surface grid points  -
   kDepth = find(rC>-1000);
