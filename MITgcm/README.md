@@ -36,7 +36,7 @@ Namelists ```data``` and ```data.cheapaml``` are ensemble-dependent, and thus pl
 
 ## Getting the forcing files
 
-The forcing files (both surface and open boundary conditions) used to generate our ensemble are accessible at [http://ocean.fsu.edu/~qjamet/share/data_in/](http://ocean.fsu.edu/~qjamet/share/data_in/). It contains both realisitc forcing for each year (with the 2 extra time records discussed above), as well as the yearly repeating forcing (1963-2012 climatology for obcs and August 2003 - July 2004 normal year for the atmospheric fields).
+The forcing files (both surface and open boundary conditions) used to generate our ensemble are accessible at [http://www.ocean.fsu.edu/~qjamet/share/data/data_in_chao12/](http://www.ocean.fsu.edu/~qjamet/share/data/data_in_chao12/). It contains both realisitc forcing for each year (with the 2 extra time records discussed above), as well as the yearly repeating forcing (1963-2012 climatology for obcs and August 2003 - July 2004 normal year for the atmospheric fields).
 
 
 ## Prepare the configuration for re-running
