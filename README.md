@@ -42,4 +42,4 @@ All files needed to set up and run this configuration are provided in [./MITgcm/
 
 ## Simulations
 
-Model ouptuts are available at [http://ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/](http://ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/).
+Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/](http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/).
