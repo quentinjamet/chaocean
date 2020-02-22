@@ -6,14 +6,14 @@
 ### Job Name
 #PBS -N orar_mem00
 ### Project code
-#PBS -A UFSU0011
+#PBS -A XXXXXXX
 #PBS -l walltime=12:00:00
 #PBS -q economy
 ### Select 10 nodes with 36 CPUs each for a total of 360 MPI processes
 ### and require 128GB nodes (mem=109GB)
 #PBS -l select=10:ncpus=36:mpiprocs=36:mem=109GB
 #PBS -m abe
-#PBS -M qjamet@fsu.edu
+#PBS -M name@mail.server
 
 # export the qsub command into the bash script to make auto-resubmission
 export SUBMIT=/opt/pbs/default/bin/qsub
