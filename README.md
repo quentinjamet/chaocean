@@ -22,7 +22,7 @@ The 4 ensembles are referred to as:
 
 - (27/09/2019) The ensemble ORAR has been extended to 24 members (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
 
-- (04/11/2019) The ensemble OCAC has been extended to 24 members with 12 new Macri Initial conditions (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
+- (04/11/2019) The ensemble OCAC has been extended to 24 members with 12 new Macro Initial Conditions (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
 
 ## Initial conditions, open boundaries and atmospheric forcing
 
