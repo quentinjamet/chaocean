@@ -33,7 +33,3 @@ The set of DFS data used to generate atmospheric conditions are available at [ht
 - The 12 additional ICs used to extend the realistic ensemble ORAR to 24 members have been constructed in the same way, but with 2-days apart model state taken in Decembre 1962
 
 - The 12 macro ICs used to extend the ensemble OCAC have been constructed as as the 3-year apart model state of memb00 (unperturbed), ensemble ocac, at January 1st of years 1967, 1971, 1975, 1979, 1983, 1987, 1991, 1995, 1999, 2003, 2007 and 2011.
-
-
-
-the model state 
