@@ -43,3 +43,25 @@ All files needed to set up and run this configuration are provided in [./MITgcm/
 ## Simulations
 
 Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/](http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/).
+
+
+
+
+## Associated publications
+
+- Uchida, T. **Jamet, Q.**, Poje, A. C.,  Wienders, N., Dewar, W. K., (**2024**) Wavelet-based wavenumber spectral estimate of eddy kinetic energy: Application to the North Atlantic. *Ocean Modelling*, 102392 -- [/10.1016/j.ocemod.2024.102392](https://doi.org/10.1016/j.ocemod.2024.102392)
+
+- Uchida, T., Balwada, D., **Jamet, Q.**, Dewar, W. K., Deremble, B., Penduff, T., Le Sommer, J. (**2023**). Cautionary tales from the mesoscale eddy transport tensor. *Ocean Modelling*, 182, 102172 -- [10.1016/j.ocemod.2023.102172](https://doi.org/10.1016/j.ocemod.2023.102172)
+
+- Dewar, W. K., Parfitt, R., & Wienders, N. (**2022**). Routine reversal of the AMOC in an ocean model ensemble. *Geophysical Research Letters*, 49(24), e2022GL100117 -- [10.1029/2022GL100117](https://doi.org/10.1029/2022GL100117)
+
+ - Uchida, T., **Jamet, Q.**, Dewar, W. K., Le Sommer, J., Penduff, T., Balwada, D. (**2022**). Diagnosing the Thickness‐Weighted Averaged Eddy‐Mean Flow Interaction From an Eddying North Atlantic Ensemble: The Eliassen‐Palm Flux. *Journal of Advances in Modeling Earth Systems*, 14(5), e2021MS002866 -- [10.1029/2021MS002866](https://doi.org/10.1029/2021MS002866).
+
+ - Uchida, T., **Jamet, Q.**, Poje, A., Dewar, W. K. (**2021**). An ensemble based eddy and spectral analysis, with application to the Gulf Stream. *Journal of Advances in Modeling Earth Systems*, 14(4), e2021MS002692 -- [10.1029/2021MS002692](https://doi.org/10.1029/2021MS002692)
+
+ - **Jamet, Q.**, Deremble, B., Wienders, N., Uchida, T., Dewar, W.K. (**2021**). On Wind-driven Energetics of Subtropical Gyres, *Journal of Advances in Modeling Earth Systems*, 13(4), e2020MS002329 -- [10.1029/2020MS002329.](https://doi.org/10.1029/2020MS002329)
+
+ - **Jamet, Q.**, Dewar, W. K., Wienders, N., Deremble, B., Close, S., Penduff, T. (**2020**). Locally and remotely forced subtropical AMOC variability: A matter of time scales. *Journal of Climate*, 33(12), 5155–5172 -- [10.1175/JCLI-D-19-0844.1](https://doi.org/10.1175/JCLI-D-19-0844.1)
+
+ - **Jamet, Q.**, Dewar, W. K., Wienders, N., Deremble, B. (**2019**). Spatio-temporal patterns of Chaos in the Atlantic Overturning Circulation. *Geophysical Research Letters*, 46(13), 7509-7517 -- [10.1029/2019GL082552](https://doi.org/10.1029/2019GL082552)
+
