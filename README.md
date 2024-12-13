@@ -45,8 +45,6 @@ All files needed to set up and run this configuration are provided in [./MITgcm/
 Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/](http://www.ocean.fsu.edu/~qjamet/share/data/forced_amoc_2019/).
 
 
-
-
 ## Associated publications
 
 - Chakravorty, S., Czaja, A., Parfitt, R., & Dewar, W. K. (**2024**). Tropospheric response to Gulf Stream intrinsic variability: a model ensemble approach. *Geophysical Research Letters*, 51(20), e2023GL107726 -- [10.1029/2023GL107726](https://doi.org/10.1029/2023GL107726)
