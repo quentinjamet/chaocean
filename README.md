@@ -51,6 +51,8 @@ Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forc
 
 - Chakravorty, S., Czaja, A., Parfitt, R., & Dewar, W. K. (**2024**). Tropospheric response to Gulf Stream intrinsic variability: a model ensemble approach. Geophysical Research Letters, 51(20), e2023GL107726 -- [10.1029/2023GL107726](https://doi.org/10.1029/2023GL107726)
 
+- Uchida, T., Jamet, Q., Dewar, W. K., Deremble, B., Poje, A. C., & Sun, L. (**2024**). Imprint of chaos on the ocean energy cycle from an eddying North Atlantic ensemble. Journal of Physical Oceanography, 54(3), 679-696. -- [10.1175/JPO-D-23-0176.1](https://doi.org/10.1175/JPO-D-23-0176.1)
+
 - Uchida, T. Jamet, Q., Poje, A. C.,  Wienders, N., Dewar, W. K., (**2024**) Wavelet-based wavenumber spectral estimate of eddy kinetic energy: Application to the North Atlantic. *Ocean Modelling*, 102392 -- [/10.1016/j.ocemod.2024.102392](https://doi.org/10.1016/j.ocemod.2024.102392)
 
 - Uchida, T., Balwada, D., Jamet, Q., Dewar, W. K., Deremble, B., Penduff, T., Le Sommer, J. (**2023**). Cautionary tales from the mesoscale eddy transport tensor. *Ocean Modelling*, 182, 102172 -- [10.1016/j.ocemod.2023.102172](https://doi.org/10.1016/j.ocemod.2023.102172)
