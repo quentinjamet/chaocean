@@ -49,6 +49,8 @@ Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forc
 
 ## Associated publications
 
+- Chakravorty, S., Czaja, A., Parfitt, R., & Dewar, W. K. (**2024**). Tropospheric response to Gulf Stream intrinsic variability: a model ensemble approach. Geophysical Research Letters, 51(20), e2023GL107726 -- [10.1029/2023GL107726](https://doi.org/10.1029/2023GL107726)
+
 - Uchida, T. Jamet, Q., Poje, A. C.,  Wienders, N., Dewar, W. K., (**2024**) Wavelet-based wavenumber spectral estimate of eddy kinetic energy: Application to the North Atlantic. *Ocean Modelling*, 102392 -- [/10.1016/j.ocemod.2024.102392](https://doi.org/10.1016/j.ocemod.2024.102392)
 
 - Uchida, T., Balwada, D., Jamet, Q., Dewar, W. K., Deremble, B., Penduff, T., Le Sommer, J. (**2023**). Cautionary tales from the mesoscale eddy transport tensor. *Ocean Modelling*, 182, 102172 -- [10.1016/j.ocemod.2023.102172](https://doi.org/10.1016/j.ocemod.2023.102172)
@@ -57,7 +59,7 @@ Model ouptuts are available at [http://www.ocean.fsu.edu/~qjamet/share/data/forc
 
  - Uchida, T., Jamet, Q., Dewar, W. K., Le Sommer, J., Penduff, T., Balwada, D. (**2022**). Diagnosing the Thickness‐Weighted Averaged Eddy‐Mean Flow Interaction From an Eddying North Atlantic Ensemble: The Eliassen‐Palm Flux. *Journal of Advances in Modeling Earth Systems*, 14(5), e2021MS002866 -- [10.1029/2021MS002866](https://doi.org/10.1029/2021MS002866).
 
- - Uchida, T., Jamet, Q., Poje, A., Dewar, W. K. (**2021**). An ensemble based eddy and spectral analysis, with application to the Gulf Stream. *Journal of Advances in Modeling Earth Systems*, 14(4), e2021MS002692 -- [10.1029/2021MS002692](https://doi.org/10.1029/2021MS002692)
+ - Uchida, T., Jamet, Q., Poje, A., Dewar, W. K. (**2022**). An ensemble based eddy and spectral analysis, with application to the Gulf Stream. *Journal of Advances in Modeling Earth Systems*, 14(4), e2021MS002692 -- [10.1029/2021MS002692](https://doi.org/10.1029/2021MS002692)
 
  - Jamet, Q., Deremble, B., Wienders, N., Uchida, T., Dewar, W.K. (**2021**). On Wind-driven Energetics of Subtropical Gyres, *Journal of Advances in Modeling Earth Systems*, 13(4), e2020MS002329 -- [10.1029/2020MS002329.](https://doi.org/10.1029/2020MS002329)
 
