@@ -24,6 +24,10 @@ The 4 ensembles are referred to as:
 
 - (04/11/2019) The ensemble OCAC has been extended to 24 members with 12 new Macro Initial Conditions (see  [files/chaocean_project_report.pdf](files/chaocean_project_report.pdf)).
 
+- (2020) The ensemble ORAR has been extended with 12 members for the period 1963-1967, starting with *macro* initial conditions taken from 12, 4-year apart model state of memb#00 of the ensemble OCAC.
+
+- (2021) The ensemble ORAR has been extended with 24 members for the period 1963-2012 based on 24 new *micro* initial conditions generated with the exact same procedure than the 24 previous *micro* initial conditions (i.e. 2-day apart model state around January, 1st 1963, run for one year under yearly repeating forcing). 
+
 ## Initial conditions, open boundaries and atmospheric forcing
 
 Scripts used to build the inputs (forcing and initial conditions), along with their description, can be found in ```./mk_config/```.
