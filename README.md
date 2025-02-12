@@ -10,7 +10,7 @@ In depth details of the simulations performed for this project are available at 
 
 ## Configuration
 
-For this project, we set up an eddy-resolving (1/12) ocean regional configuration of the North Atlantic [20S, 55N] with the MITgcm, coupled the atmospheric boundary layer model CheapAML. We have run 4 different experiments of this configuration, which differ from one another by their surface forcing and open boundary conditions; their are either fully varying (realistic) or yearly repeating. All of these experiments have been integrated over 50 years (1963-2012) with a 12-member ensemble strategy; within an ensemble, all members are exposed to the same forcing (surface and open boundaries), but differ by their initial conditions at Janury, 1st 1963. 
+For this project, we set up an eddy-resolving (1/12) ocean regional configuration of the North Atlantic [20S, 55N] with the MITgcm, coupled the atmospheric boundary layer model CheapAML. We have run 4 different experiments of this configuration, which differ from one another by their surface forcing and open boundary conditions; forcings are either fully varying (realistic) or yearly repeating. All of these experiments have been integrated over 50 years (1963-2012) with a 12-member ensemble strategy; within an ensemble, all members are exposed to the same forcing (surface and open boundaries), but differ by their initial conditions at Janury, 1st 1963. 
 
 The 4 ensembles are referred to as:
 
